@@ -1,0 +1,83 @@
+.caixa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.caixa-principal{
+    display: inline-block;
+    position: relative;
+}
+
+.caixa-dialogo{
+    z-index: 2;
+    position: absolute;
+    translate: (-40%);
+    animation: flutua 3.5s infinite ease-in-out ;
+
+    .img2{
+        display: none;
+    }
+}
+
+@keyframes flutua {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+}
+
+.btns{
+    transform: translateY(-500%);
+    display: flex;
+    justify-content: space-around;
+
+    button{
+        width: 100px;
+        top: 20px;
+    }
+}
+
+.pokemon{
+    margin-top: 90%;
+    left: 40%;
+    position: absolute;
+    z-index: 1;
+    animation: jump 3s infinite ease-in-out;
+
+    img{
+        width: 100px;
+    }
+}
+
+.chao{
+    margin-top: 50%;
+    animation: jump 3s infinite ease-in-out;
+}
+
+@keyframes jump {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    
+}
+
+@media (max-width: 830px){
+    .caixa-dialogo{
+        translate: 0;
+
+        .img1{
+            display: none;
+        }
+
+        .img2{
+            display: block;
+        }
+    }
+}
