@@ -1,21 +1,24 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './modal-home.component.html',
   styleUrl: './modal-home.component.scss'
 })
 export class ModalHomeComponent {
   private modalService = inject(NgbModal);
-  valor = '';
 
-  ngOnInit(){
-    console.warn("Valor ==>", this.valor)
+  @Input() joke: any = null; 
+
+  ngOnInit() {
+    console.warn('Joke recebida no modal =>', this.joke);
   }
 
-  closeModal():void{
-    this.modalService.dismissAll()
+  closeModal(): void {
+    this.modalService.dismissAll();
   }
 }

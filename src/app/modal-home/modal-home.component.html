@@ -1,11 +1,14 @@
-<div (click)="closeModal()">
-    <h1>Info:</h1>
-    <ul>
-        <p>Joke: </p>
-
-        <li>Created at: </li>
-        <li>Last Update: </li>
-        <li>Url: </li>
-        
-    </ul>
+<div  *ngIf="joke" >
+    <div class="joke">
+        <h1>Joke Info:</h1>
+        <ul>
+          <p> {{ joke.value }}</p>
+          <li><strong>Created at:</strong> {{ joke.created_at }}</li>
+          <li><strong>Last Update:</strong> {{ joke.updated_at }}</li>
+          <li><strong>URL:</strong> <a [href]="joke.url" target="_blank">{{ joke.url }}</a></li>
+        </ul>
+        <div class="btn">
+            <button (click)="closeModal()">Close</button>
+        </div>
+    </div>
 </div>

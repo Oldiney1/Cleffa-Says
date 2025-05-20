@@ -1,19 +1,30 @@
-import { Component, inject } from '@angular/core';
-import { ModalHomeComponent } from '../modal-home/modal-home.component';
+import { Component, inject, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChuckJokesService } from '../services/chuck-jokes.service';
+import { ModalHomeComponent } from '../modal-home/modal-home.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss'], 
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  public dados: any;
+
+  constructor(private chuckJokesService: ChuckJokesService) {}
 
   private modalService = inject(NgbModal);
 
-  openModal():void {
-    const modal = this.modalService.open(ModalHomeComponent);
-    modal.componentInstance.valor = 'valor qualquer';
+  ngOnInit(): void {
+    this.chuckJokesService.getDados().subscribe((res) => {
+      this.dados = res;
+    });
+  }
+
+  openModal(): void {
+    this.chuckJokesService.getDados().subscribe((jokeData) => {
+      const modalRef = this.modalService.open(ModalHomeComponent);
+      modalRef.componentInstance.joke = jokeData;
+    });
   }
 }
