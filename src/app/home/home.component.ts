@@ -16,15 +16,18 @@ export class HomeComponent implements OnInit {
   private modalService = inject(NgbModal);
 
   ngOnInit(): void {
+  this.carregarMsg();
+  }
+  
+  carregarMsg(): void {
     this.chuckJokesService.getDados().subscribe((res) => {
       this.dados = res;
     });
   }
 
-  openModal(): void {
-    this.chuckJokesService.getDados().subscribe((jokeData) => {
-      const modalRef = this.modalService.open(ModalHomeComponent);
-      modalRef.componentInstance.joke = jokeData;
-    });
-  }
+openModal(): void {
+  const modalRef = this.modalService.open(ModalHomeComponent);
+  modalRef.componentInstance.joke = this.dados;
+}
+
 }
