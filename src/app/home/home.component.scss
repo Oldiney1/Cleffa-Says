@@ -23,19 +23,10 @@
     z-index: 2;
     position: absolute;
     translate: (-40%);
-    animation: flutua 3.5s infinite ease-in-out ;
+    animation: jump 3.5s infinite ease-in-out ;
 
     .img2{
         display: none;
-    }
-}
-
-@keyframes flutua {
-    0%, 100%{
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(-10px);
     }
 }
 
